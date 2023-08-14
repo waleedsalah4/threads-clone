@@ -8,6 +8,7 @@ async function page() {
 
   // const userInfo = await fetchUser(user.id);
   // if (userInfo?.onboarded) redirect("/");
+  // console.log(user);
 
   const userData = {
     id: user.id,
