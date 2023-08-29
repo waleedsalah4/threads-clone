@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
+import Thread from "../models/thread.model";
 
 export async function fetchUser(userId: string) {
   try {
@@ -62,7 +63,7 @@ export async function updateUser({
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
-/*
+
 export async function fetchUserPosts(userId: string) {
   try {
     connectToDB();
@@ -72,11 +73,11 @@ export async function fetchUserPosts(userId: string) {
       path: "threads",
       model: Thread,
       populate: [
-        {
-          path: "community",
-          model: Community,
-          select: "name id image _id", // Select the "name" and "_id" fields from the "Community" model
-        },
+        // {
+        //   path: "community",
+        //   model: Community,
+        //   select: "name id image _id", // Select the "name" and "_id" fields from the "Community" model
+        // },
         {
           path: "children",
           model: Thread,
@@ -89,11 +90,10 @@ export async function fetchUserPosts(userId: string) {
       ],
     });
     return threads;
-  } catch (error) {
-    console.error("Error fetching user threads:", error);
-    throw error;
+  } catch (error: any) {
+    throw Error("Error fetching user threads:", error);
   }
-}*/
+}
 
 // Almost similar to Thead (search + pagination) and Community (search + pagination)
 export async function fetchUsers({
