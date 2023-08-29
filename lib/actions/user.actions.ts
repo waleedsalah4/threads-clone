@@ -153,7 +153,7 @@ export async function fetchUsers({
     throw error;
   }
 }
-/*
+
 export async function getActivity(userId: string) {
   try {
     connectToDB();
@@ -181,4 +181,4 @@ export async function getActivity(userId: string) {
     console.error("Error fetching replies: ", error);
     throw error;
   }
-}*/
+}
